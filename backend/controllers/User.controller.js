@@ -2,7 +2,7 @@ import UserModel from "../models/User.model.js";
 import "dotenv/config";
 
 
-export async function register(req,res) 
+export async function registerUser(req,res) 
 {
     let data = req.body;
     let user = await UserModel.findOne({email:data.email});
@@ -26,8 +26,9 @@ export async function register(req,res)
 
 }
 
-export async function login(req,res) 
+export async function loginUser(req,res) 
 {
+
     let data = req.body;
     let user = await UserModel.findOne({email:data.email});
     if(!user)
