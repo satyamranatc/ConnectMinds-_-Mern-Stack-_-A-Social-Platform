@@ -7,8 +7,8 @@ export async function registerUser(req,res)
     let data = req.body;
     let user = await UserModel.findOne({email:data.email});
     if(user)
-    {
-        res.status(400).json({message:"User already exists"});
+        {
+            res.status(400).json({message:"User already exists"});
         return;
     }
     
@@ -17,7 +17,7 @@ export async function registerUser(req,res)
         return res.status(201).json({
             message:"User created successfully",
             userData:user,
-            token:user.generateAuthToken()
+            token: await user.generateAuthToken()
         });        
     } catch (error) {
         console.log(error);
@@ -44,7 +44,7 @@ export async function loginUser(req,res)
     return res.status(200).json({
         message:"Login successful",
         userData:user,
-        token:user.generateAuthToken()
+        token: await user.generateAuthToken()
     });
 }
 

@@ -28,8 +28,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Feed/>}/>
           <Route path="/saved" element={<SavedPost/>}/>
-          <Route path="/auth" element={<Auth setUser={setUser} />}/>
-          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/auth" element={<Auth user = {user} setUser={setUser} />}/>
+          <Route path="/profile" element={<Profile user={user} setUser = {setUser} />}/>
         </Routes>
       </BrowserRouter>
     </div>
