@@ -26,7 +26,7 @@ export default function App() {
       <BrowserRouter>
         <NavBar user={user} />
         <Routes>
-          <Route path="/" element={<Feed/>}/>
+          <Route path="/" element={<Feed user = {user} />}/>
           <Route path="/saved" element={<SavedPost/>}/>
           <Route path="/auth" element={<Auth user = {user} setUser={setUser} />}/>
           <Route path="/profile" element={<Profile user={user} setUser = {setUser} />}/>

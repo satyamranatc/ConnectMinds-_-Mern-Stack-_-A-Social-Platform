@@ -9,6 +9,27 @@ export async function getAllPosts(req,res)
         posts:posts
     });
 }
+export async function getFeedPosts(req,res) 
+{
+    let {user} = req.query;
+    let posts = await PostModel.find().populate("user");
+    let feedPost = posts.filter((post) => post.user._id != user);
+    return res.status(200).json({
+        message:"All posts",
+        posts:feedPost
+    });
+}
+
+export async function getUserPosts(req,res) 
+{
+    let {user} = req.query;
+    let posts = await PostModel.find().populate("user");
+    let feedPost = posts.filter((post) => post.user._id == user);
+    return res.status(200).json({
+        message:"All posts",
+        posts:feedPost
+    });
+}
 
 export async function createPost(req,res) 
 {
